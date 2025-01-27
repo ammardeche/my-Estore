@@ -1,0 +1,54 @@
+<div
+  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4"
+>
+  @if (cartItems().length === 0) {
+  <div class="col-span-full text-center">No products selected yet</div>
+  } @for (item of cartItems(); track item.product.id ; let i = $index) {
+
+  <div
+    class="bg-gray-100 shadow-md py-4 rounded-lg overflow-hidden flex flex-col items-center transition-transform transform hover:scale-105"
+  >
+    <!-- Product Image -->
+    <div
+      class="bg-gray-300 w-full h-48 flex items-center justify-center overflow-hidden"
+    >
+      <img
+        src="{{ item.product.images[0] }}"
+        alt="{{ item.product.title }}"
+        class="h-full w-full object-cover"
+      />
+    </div>
+
+    <!-- Product Details -->
+    <div class="p-4 w-full text-center">
+      <h3 class="text-lg font-semibold text-gray-700 truncate">
+        {{ item.product.title }}
+      </h3>
+      <p class="text-sm text-gray-500 mt-2">Price: ${{ item.product.price }}</p>
+    </div>
+
+    <!-- Quantity Controls -->
+    <div class="flex items-center justify-center mt-2 gap-2">
+      <button
+        (click)="dicrement(item)"
+        class="bg-red-400 text-white px-3 py-1 rounded-md hover:bg-red-500 transition focus:ring-2 focus:ring-red-300"
+      >
+        -
+      </button>
+
+      <span class="text-lg font-medium text-gray-700">{{
+        cartItems()[i].quantity
+      }}</span>
+
+      <button
+        (click)="increment(item)"
+        class="bg-green-400 text-white px-3 py-1 rounded-md hover:bg-green-500 transition focus:ring-2 focus:ring-green-300"
+      >
+        +
+      </button>
+    </div>
+  </div>
+  }
+
+  <span>total : {{ formattedTotal() }}</span>
+</div>

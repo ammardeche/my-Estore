@@ -1,0 +1,83 @@
+<div class="flex w-full z-20 fixed flex-col">
+  <div class="w-full bg-[#1327bf] gap-3 py-1 flex flex-row justify-center">
+    <div class="flex flex-row items-center gap-2">
+      <img class="w-[20px]" src="/giftbox.png" alt="" />
+      <span class="text-white">Free Shipping on Orders Over $50!</span>
+    </div>
+    <button class="bg-white px-2 rounded-md text-xs">Shop Now</button>
+  </div>
+
+  <header class="w-full py-4 bg-white border-b-2 border-gray-300">
+    <div class="container flex flex-row justify-between">
+      <!-- logo -->
+      <div class="flex flex-row items-center gap-2">
+        <div
+          class="px-4 flex flex-row items-center gap-2 border-r-2 border-gray-300"
+        >
+          <img class="w-[30px]" src="/shopping.png" alt="" />
+          <span class="font-bold text-2xl">E-Rynek</span>
+        </div>
+        <div class="relative">
+          <div class="flex flex-row items-center gap-4">
+            <button
+              (click)="toggleMenu()"
+              class="flex flex-row items-center gap-2"
+            >
+              <span class="nav-item">Shopping</span>
+              @if(IsOpened()){
+              <img class="w-[10px] pt-[0.20rem]" src="/arrow-up.png" alt="" />
+              } @else {
+              <img class="w-[12px] pt-[0.20rem]" src="/down-arrow.png" alt="" />
+
+              }
+            </button>
+
+            <a class="nav-item" href="">Contact </a>
+            <a class="nav-item" href="">About Us </a>
+          </div>
+
+          <div
+            [ngClass]="{ 'show-menu ': IsOpened(), 'hide-menu': !IsOpened() }"
+            class="absolute top-12 bg-white w-[200px] rounded-lg px-4 py-3 shadow-xl"
+          >
+            <div class="flex h-full flex-row justify-between gap-2">
+              <div class="flex-flex-col">
+                <span class="font-bold pb-3">Catalog</span>
+                <div class="flex flex-col gap-1 text-gray-600 menu-items">
+                  <a href="">All Products </a>
+
+                  <a href="">beauty</a>
+                  <a href="">fragrances </a>
+                  <a href="">furniture </a>
+                  <a href="">groceries </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- navbar -->
+      <nav class="flex flex-row items-center gap-6">
+        <button>
+          <img class="w-[23px]" src="/search.png" alt="" />
+        </button>
+        <button>
+          <img class="w-[23px]" src="/user.png" alt="" />
+        </button>
+        <button (click)="isCartOpen()" class="relative btn-cart">
+          <img class="w-[23px]" src="/shopping-bag.png" alt="" />
+          <div
+            class="absolute text-white font-bold text-center bg-red-500 top-0 right-[-3px] px-1 text-xs rounded-full"
+          >
+            {{ Quantity() }}
+          </div>
+        </button>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<app-cart
+  [ngClass]="{ 'show-cart ': IsCartOpened(), 'hide-cart': !IsCartOpened() }"
+  class="h-full absolute bg-red-300 right-0 top-0"
+></app-cart>

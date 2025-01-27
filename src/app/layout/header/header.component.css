@@ -1,0 +1,29 @@
+.links:hover {
+  color: red;
+}
+
+.show-menu {
+  max-height: 220px; /* Expands the height */
+  overflow: hidden; /* Ensures no overflow */
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out; /* Smooth animation */
+  padding: 0.5rem; /* Adjust padding for visibility */
+}
+
+.hide-menu {
+  max-height: 0; /* Collapses the height */
+  overflow: hidden; /* Hides content */
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+  padding: 0; /* Remove padding when collapsed */
+}
+.show-cart {
+  width: 250px;
+  transition: width 0.2s ease-in;
+}
+
+.hide-cart {
+  width: 0px;
+  transition: width 0.2s ease-out;
+}
+.menu-items a:hover {
+  color: black;
+}

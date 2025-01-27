@@ -1,0 +1,49 @@
+<div
+  class="bg-white shadow-md rounded-lg p-6 mx-auto mt-8 max-w-md flex flex-col items-center"
+>
+  <!-- Product Image -->
+  <div
+    class="bg-gray-100 p-4 rounded-md w-full flex items-center justify-center"
+  >
+    <img
+      class="w-full h-auto max-w-[250px] object-contain"
+      src="{{ product.images[0] }}"
+      alt="{{ product.title }}"
+    />
+  </div>
+
+  <!-- Product Title -->
+  <h1 class="mt-4 text-2xl font-semibold text-gray-800 text-center">
+    {{ product.title }}
+  </h1>
+
+  <!-- Product Description -->
+  <p class="mt-3 text-gray-600 text-sm text-justify">
+    Description: {{ product.description }}
+  </p>
+
+  <!-- Product Price -->
+  <p class="mt-4 text-lg font-bold text-gray-700">
+    Price: ${{ product.price }}
+  </p>
+
+  <!-- Actions -->
+  <div class="flex flex-row gap-4 mt-6">
+    @if (isProductInCart(product.id)) {
+    <p class="text-green-500">product is Added to cart</p>
+    } @else {
+    <button
+      (click)="addtocart(product)"
+      class="px-4 py-2 bg-green-500 text-white rounded-md shadow-md hover:bg-green-600 transition"
+    >
+      Add to Cart
+    </button>
+    }
+
+    <button
+      class="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 transition"
+    >
+      Buy Now
+    </button>
+  </div>
+</div>
