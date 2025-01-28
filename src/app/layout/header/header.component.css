@@ -16,14 +16,26 @@
   padding: 0; /* Remove padding when collapsed */
 }
 .show-cart {
-  width: 250px;
+  width: 350px;
   transition: width 0.2s ease-in;
 }
 
 .hide-cart {
   width: 0px;
   transition: width 0.2s ease-out;
+  overflow: hidden; /* Hides content */
 }
 .menu-items a:hover {
   color: black;
+}
+.overlay {
+  background: rgba(0, 0, 0, 0.3); /* Semi-transparent overlay */
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.overlay:not(.overlay) {
+  opacity: 0;
+  pointer-events: none;
 }

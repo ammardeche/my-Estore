@@ -24,12 +24,11 @@
               class="flex flex-row items-center gap-2"
             >
               <span class="nav-item">Shopping</span>
-              @if(IsOpened()){
-              <img class="w-[10px] pt-[0.20rem]" src="/arrow-up.png" alt="" />
-              } @else {
-              <img class="w-[12px] pt-[0.20rem]" src="/down-arrow.png" alt="" />
-
-              }
+              <img
+                class="w-[10px]"
+                [src]="IsOpened() ? '/arrow-up.png' : '/down-arrow.png'"
+                alt=""
+              />
             </button>
 
             <a class="nav-item" href="">Contact </a>
@@ -61,8 +60,15 @@
         <button>
           <img class="w-[23px]" src="/search.png" alt="" />
         </button>
-        <button>
+        <button class="relative">
           <img class="w-[23px]" src="/user.png" alt="" />
+          <div
+            class="absolute bg-white shadow-xl px-3 py-2 rounded-lg top-[36px]"
+          >
+            <div class="flex flex-col gap-2">
+              <div class="flex flex-row items-center gap-2"></div>
+            </div>
+          </div>
         </button>
         <button (click)="isCartOpen()" class="relative btn-cart">
           <img class="w-[23px]" src="/shopping-bag.png" alt="" />
@@ -76,8 +82,11 @@
     </div>
   </header>
 </div>
-
+<div
+  [ngClass]="{ overlay: IsCartOpened() }"
+  class="absolute inset-0 pointer-events-none"
+></div>
 <app-cart
-  [ngClass]="{ 'show-cart ': IsCartOpened(), 'hide-cart': !IsCartOpened() }"
-  class="h-full absolute bg-red-300 right-0 top-0"
+  [ngClass]="{ 'show-cart': IsCartOpened(), 'hide-cart': !IsCartOpened() }"
+  class="h-full absolute bg-white shadow-lg right-0 top-0"
 ></app-cart>
