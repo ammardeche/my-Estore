@@ -31,6 +31,11 @@ export class HeaderComponent implements OnInit {
 
   IsOpened = signal<boolean>(false);
   IsCartOpened = signal<boolean>(false);
+  IsUserbox = signal<boolean>(false);
+
+  UserBoxToggle() {
+    this.IsUserbox.update((value) => !value);
+  }
 
   toggleMenu() {
     this.IsOpened.update((value) => !value);
