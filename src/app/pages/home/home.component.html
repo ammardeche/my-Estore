@@ -1,0 +1,41 @@
+<section class="w-full f-sec py-16 px-14">
+  <div class="text-black">
+    <p-carousel
+      [value]="products"
+      [numVisible]="1"
+      [numScroll]="1"
+      [showIndicators]="true"
+      [autoplayInterval]="3000"
+    >
+      <ng-template let-product pTemplate="item">
+        <div class="product-card grid grid-cols-2 gap-3 items-center container">
+          <div class="image relative flex flex-row justify-center">
+            <img class="" [src]="product.images" alt="" />
+          </div>
+          <div class="details flex flex-col gap-4">
+            <span class="text-xl">In this seasion find the best </span>
+            <!--  -->
+            <p
+              class="font-bold text-[4rem] leading-[5rem] animate__slideInDown"
+            >
+              Find the Best Deals of the Season!
+            </p>
+            <div class="w-full">
+              <button
+                class="flex flex-row justify-start bg-[#1327bf] px-4 py-1 text-white rounded-md"
+              >
+                Shop Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+</section>
+
+<section class="category-item py-16 container">
+  <app-category-item></app-category-item>
+</section>
+
+<!-- [autoplayInterval]="3000" -->

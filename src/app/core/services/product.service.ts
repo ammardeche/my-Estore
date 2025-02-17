@@ -1,5 +1,12 @@
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  map,
+  Observable,
+  tap,
+  throwError,
+} from 'rxjs';
 import { IUser } from '../models/IUser';
 import { ICategory } from '../models/ICategory';
 import { IProduct } from '../models/IProduct';
@@ -19,6 +26,7 @@ export class ProductService {
   private getProductsSubject$ = new BehaviorSubject<IProduct[]>([]);
   private getCategoriesSubject$ = new BehaviorSubject<ICategory[]>([]);
   private getProductByIdSubject$ = new BehaviorSubject<IProduct | null>(null);
+  private OffersProductSubject$ = new BehaviorSubject<IProduct[]>([]);
 
   getProuducts(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(this.Product_Api).pipe(
@@ -49,6 +57,16 @@ export class ProductService {
       tap((res: IProduct) => {
         this.getProductByIdSubject$.next(res);
       })
+    );
+  }
+
+  OffersProduct(): Observable<IProduct[]> {
+    return this.http.get<{ products: IProduct[] }>(this.Product_Api).pipe(
+      map((res) => {
+        if (!res.products) return [];
+        return res.products.filter((p) => p.price < 3);
+      }),
+      tap((filtredProduct) => this.OffersProductSubject$.next(filtredProduct))
     );
   }
 }

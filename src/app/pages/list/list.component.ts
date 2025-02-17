@@ -3,6 +3,8 @@ import { ProductService } from '../../core/services/product.service';
 import { IProduct, ProductResponse } from '../../core/models/IProduct';
 import { FormsModule } from '@angular/forms';
 import { CurrencyPipe, NgFor } from '@angular/common';
+import { CarouselModule } from 'primeng/carousel';
+
 import { Observable, pipe } from 'rxjs';
 import { ICategory } from '../../core/models/ICategory';
 import { RouterLink } from '@angular/router';
@@ -12,7 +14,7 @@ import { ICartItems } from '../../core/models/ICartItems';
 
 @Component({
   selector: 'app-list',
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })

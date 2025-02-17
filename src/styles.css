@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import url("https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import "animate.css";
 
 @tailwind base;
 @tailwind components;
@@ -16,8 +17,21 @@
 html,
 body {
   height: 100%;
+  background-color: white;
 }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.p-carousel-indicators {
+  display: flex !important;
+  justify-content: center;
+  gap: 8px; /* Adjust spacing */
+}
+
+/* Default dots */
+.p-carousel-indicator button {
+  background-color: #1327bf; /* Default color */
+  transition: background-color 0.3s ease;
 }

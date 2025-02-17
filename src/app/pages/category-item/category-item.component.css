@@ -1,0 +1,16 @@
+.category-card {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+  transition: 0.3s ease;
+}
+
+.category-card:hover {
+  background-color: #1327bf;
+}
+
+.category-card:hover h2 {
+  color: white;
+}
+.title {
+  border-bottom: 2px solid #1327bf;
+}

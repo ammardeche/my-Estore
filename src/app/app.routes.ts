@@ -10,6 +10,9 @@ import { isNotLoggedInGuard } from './core/guards/is-not-logged-in.guard';
 import { CartComponent } from './pages/cart/cart.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { LineItemsCartComponent } from './pages/line-items-cart/line-items-cart.component';
+import { HomeComponent } from './pages/home/home.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
+import { CategoryItemComponent } from './pages/category-item/category-item.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent, canActivate: [isNotLoggedInGuard] },
@@ -18,7 +21,15 @@ export const routes: Routes = [
     component: LayoutComponent,
     canActivate: [isLoggedInGuard],
     children: [
-      { path: '', component: ListComponent },
+      { path: '', component: HomeComponent },
+      { path: 'list', component: ListComponent },
+      {
+        path: 'category',
+        component: CategoriesComponent,
+
+        children: [{ path: 'categoryItem', component: CategoryItemComponent }],
+      },
+
       { path: 'edite', component: EditeComponent },
       { path: 'add', component: AddComponent },
       { path: 'details/:id', component: DetailsComponent },
