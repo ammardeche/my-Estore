@@ -8,16 +8,16 @@ import { CommonModule } from '@angular/common';
 import { animate } from '@angular/animations';
 import { CategoryItemComponent } from '../category-item/category-item.component';
 import { CategoriesComponent } from '../categories/categories.component';
+import { ListComponent } from '../list/list.component';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, Carousel, ButtonModule, CategoryItemComponent],
+  imports: [CommonModule, ButtonModule, CategoryItemComponent, ListComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
   products: IProduct[] = [];
-  responsiveOptions: any[] | undefined;
 
   ngOnInit(): void {
     this.prodService.OffersProduct().subscribe((res) => {

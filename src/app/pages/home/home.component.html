@@ -1,41 +1,85 @@
-<section class="w-full f-sec py-16 px-14">
-  <div class="text-black">
-    <p-carousel
-      [value]="products"
-      [numVisible]="1"
-      [numScroll]="1"
-      [showIndicators]="true"
-      [autoplayInterval]="3000"
+<section class="w-full h-screen relative f-sec py-16 px-14">
+  <div class="container h-full flex flex-row items-center">
+    <div
+      class="box flex flex-col gap-4 bg-white w-[370px] py-3 px-4 rounded-lg"
     >
-      <ng-template let-product pTemplate="item">
-        <div class="product-card grid grid-cols-2 gap-3 items-center container">
-          <div class="image relative flex flex-row justify-center">
-            <img class="" [src]="product.images" alt="" />
+      <p class="text-black font-bold text-2xl leading-9 text-pretty">
+        <span class="text-[#1327bf]">Discover</span> the Best in Beauty,
+        Fragrances, Furniture & Groceries – Elevate Your Lifestyle with
+        Handpicked Essentials Just for You!
+      </p>
+
+      <p class="text-gray-500 text-lg">
+        Find everything you need to make your home and lifestyle even better.
+      </p>
+
+      <button class="bg-[#1327bf] w-fit px-5 py-3">Shopping Now</button>
+    </div>
+
+    <div
+      class="absolute px-4 flex flex-row items-center gap-3 bottom-[-20px] left-0 right-0 mx-auto w-[90%] md:w-[80%] lg:w-[70%] text-black py-4 shadow-xl bg-white"
+    >
+      <div class="grid grid-cols-4 gap-5 items-center">
+        <div class="details flex flex-row items-center gap-4 pr-4">
+          <!-- icon -->
+          <div>
+            <img class="w-[40px]" src="/truck.png" alt="" />
           </div>
-          <div class="details flex flex-col gap-4">
-            <span class="text-xl">In this seasion find the best </span>
-            <!--  -->
-            <p
-              class="font-bold text-[4rem] leading-[5rem] animate__slideInDown"
-            >
-              Find the Best Deals of the Season!
-            </p>
-            <div class="w-full">
-              <button
-                class="flex flex-row justify-start bg-[#1327bf] px-4 py-1 text-white rounded-md"
-              >
-                Shop Now
-              </button>
-            </div>
+          <!-- details -->
+          <div class="flex flex-col">
+            <p class="text-black font-medium">Free shipping</p>
+            <p class="text-gray-500 text-sm">When you spend $80 or more</p>
           </div>
         </div>
-      </ng-template>
-    </p-carousel>
+
+        <div class="details flex flex-row items-center gap-4 pr-4">
+          <!-- icon -->
+          <div>
+            <img class="w-[30px]" src="/messenger.png" alt="" />
+          </div>
+          <!-- details -->
+          <div class="flex flex-col">
+            <p class="text-black font-medium">We are available 24/7</p>
+            <p class="text-gray-500 text-sm">Need help? contact us anytime</p>
+          </div>
+        </div>
+
+        <div class="details flex flex-row items-center gap-4 pr-4">
+          <!-- icon -->
+          <div>
+            <img class="w-[30px]" src="/product-return.png" alt="" />
+          </div>
+          <!-- details -->
+          <div class="flex flex-col">
+            <p class="text-black font-medium">Satisfied or return</p>
+            <p class="text-gray-500 text-sm">Easy 30-day return policy</p>
+          </div>
+        </div>
+
+        <div class="flex flex-row items-center gap-4 pr-4">
+          <!-- icon -->
+          <div>
+            <img class="w-[30px]" src="/credit-card.png" alt="" />
+          </div>
+          <!-- details -->
+          <div class="flex flex-col">
+            <p class="text-black font-medium">100% secure payments</p>
+            <p class="text-gray-500 text-sm">
+              Visa, Mastercard, Stripe, PayPal
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="category-item py-16 container">
+<section class="category-item py-36 container">
   <app-category-item></app-category-item>
+</section>
+
+<section class="container">
+  <app-list></app-list>
 </section>
 
 <!-- [autoplayInterval]="3000" -->

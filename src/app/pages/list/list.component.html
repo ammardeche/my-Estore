@@ -1,1 +1,53 @@
-<p class="py-10">ss</p>
+<section>
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 justify-center items-center"
+  >
+    @for (item of products(); track $index) {
+    <div
+      class="w-[300px] bg-white shadow-lg rounded-lg p-5 flex flex-col gap-4"
+    >
+      <!-- Image Container with Hover Effect -->
+      <div class="w-full h-[200px] relative overflow-hidden rounded-lg group">
+        <img
+          src="{{ item.images[0] }}"
+          alt="Product Image"
+          class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
+        />
+        <img
+          src="{{ item.images[1] }}"
+          alt="Product Hover Image"
+          class="w-full h-full object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        />
+      </div>
+
+      <!-- Product Title -->
+      <h2 class="text-xl font-bold text-gray-800 text-center">
+        {{ item.title }}
+      </h2>
+
+      <!-- Rating -->
+      <div class="flex items-center justify-center gap-1 text-yellow-500">
+        <span class="text-lg">★</span>
+        <span class="text-gray-600 text-sm">{{ item.rating }}</span>
+      </div>
+
+      <!-- Product Summary -->
+      <p class="text-gray-600 text-sm text-center line-clamp-2">
+        {{ item.description }}
+      </p>
+
+      <!-- Price -->
+      <div class="text-lg font-semibold text-black text-center">
+        ${{ item.price }}
+      </div>
+
+      <!-- Add to Cart Button -->
+      <button
+        class="bg-[#1327bf] text-white py-2 px-4 rounded-lg hover:bg-[#0f1f9c] w-full"
+      >
+        Add to Cart
+      </button>
+    </div>
+    }
+  </div>
+</section>

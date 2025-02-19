@@ -1,0 +1,9 @@
+.f-sec {
+  background-image: url("/sectiion.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.details {
+  border-right: 1px solid gray;
+}
