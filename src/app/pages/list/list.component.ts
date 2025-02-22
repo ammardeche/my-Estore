@@ -97,6 +97,7 @@ export class ListComponent implements OnInit {
   isProductAdded() {
     this.cart_Service.isProductAddedSubject$.subscribe((res) => {
       this.addedProducts = res;
+      console.log('the status of product is added : ', res);
     });
   }
 }

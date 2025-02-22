@@ -25,7 +25,10 @@
   <!-- Product Price -->
   <p class="mt-4 text-lg font-bold text-gray-700">
     Price: ${{ product.price }}
+  
   </p>
+   
+  
 
   <!-- Actions -->
   <div class="flex flex-row gap-4 mt-6">
@@ -33,7 +36,7 @@
     <p class="text-green-500">product is Added to cart</p>
     } @else {
     <button
-      (click)="addtocart(product)"
+      (click)="productAddedToCart()"
       class="px-4 py-2 bg-green-500 text-white rounded-md shadow-md hover:bg-green-600 transition"
     >
       Add to Cart

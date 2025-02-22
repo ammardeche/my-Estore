@@ -7,3 +7,11 @@
 .details {
   border-right: 1px solid gray;
 }
+
+.second-section {
+  background-image: url("/background-sec.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
