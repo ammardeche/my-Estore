@@ -13,6 +13,7 @@ import { LineItemsCartComponent } from './pages/line-items-cart/line-items-cart.
 import { HomeComponent } from './pages/home/home.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { CategoryItemComponent } from './pages/category-item/category-item.component';
+import { NewsletterComponent } from './pages/newsletter/newsletter.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent, canActivate: [isNotLoggedInGuard] },
@@ -23,6 +24,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'list', component: ListComponent },
+      { path: 'newletter', component: NewsletterComponent },
       {
         path: 'category',
         component: CategoriesComponent,
