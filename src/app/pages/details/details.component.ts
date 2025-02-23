@@ -3,10 +3,11 @@ import { ProductService } from '../../core/services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from '../../core/models/IProduct';
 import { CartItemService } from '../../core/services/cart-item.service';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-details',
-  imports: [],
+  imports: [NgFor, NgIf],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
 })
@@ -25,6 +26,12 @@ export class DetailsComponent implements OnInit {
     this.getId = this.router.snapshot.paramMap.get('id');
     this.getProduct();
     this.productAddedToCart();
+  }
+
+  selectedImage: string | null = null;
+
+  onImageClick(imageUrl: string): void {
+    this.selectedImage = imageUrl;
   }
 
   getProduct() {

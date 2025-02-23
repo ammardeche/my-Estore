@@ -14,7 +14,7 @@ import { ICartItems } from '../../core/models/ICartItems';
 
 @Component({
   selector: 'app-list',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })

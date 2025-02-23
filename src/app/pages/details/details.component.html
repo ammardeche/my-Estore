@@ -1,52 +1,80 @@
-<div
-  class="bg-white shadow-md rounded-lg p-6 mx-auto mt-8 max-w-md flex flex-col items-center"
->
-  <!-- Product Image -->
+<section class="py-20">
   <div
-    class="bg-gray-100 p-4 rounded-md w-full flex items-center justify-center"
+    class="bg-white shadow-md rounded-lg p-10 mx-auto mt-10 max-w-4xl border-gray-500 border-[1px]"
   >
-    <img
-      class="w-full h-auto max-w-[250px] object-contain"
-      src="{{ product.images[0] }}"
-      alt="{{ product.title }}"
-    />
+    <div class="flex flex-col md:flex-row gap-10">
+      <!-- Product Images -->
+      <div class="w-full md:w-1/2">
+        <img
+          [src]="selectedImage || product.images[0]"
+          alt="{{ product.title }}"
+          class="w-full h-auto rounded-lg shadow-md"
+        />
+        <!-- Thumbnail Images -->
+        <div class="flex gap-3 mt-4">
+          <img
+            *ngFor="let image of product.images"
+            (click)="onImageClick(image)"
+            [src]="image"
+            alt="Product Thumbnail"
+            class="w-20 h-20 object-cover rounded-md cursor-pointer border-2 border-transparent hover:border-blue-500"
+          />
+        </div>
+      </div>
+
+      <!-- Product Details -->
+      <div class="w-full md:w-1/2">
+        <p class="text-sm text-gray-500 uppercase tracking-wide">
+          Minimal Women Collection
+        </p>
+        <h1 class="text-4xl font-bold text-gray-900 mb-3">
+          {{ product.title }}
+        </h1>
+
+        <!-- Price -->
+        <p class="text-2xl font-semibold text-green-600 mb-5">
+          ${{ product.price }}
+          <span class="text-sm text-gray-400 line-through ml-2">$50.00</span>
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="flex gap-4 mt-6">
+          <button
+            class="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg hover:bg-gray-300"
+          >
+            ♡ Wishlist
+          </button>
+
+          <ng-container *ngIf="isProductInCart(product.id)">
+            <p class="text-green-500 font-medium">✔️ Added to Cart</p>
+          </ng-container>
+
+          <button
+            *ngIf="!isProductInCart(product.id)"
+            (click)="productAddedToCart()"
+            class="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700"
+          >
+            + Add to Cart
+          </button>
+        </div>
+
+        <!-- Product Details -->
+        <div class="mt-8">
+          <h3 class="text-lg font-semibold text-gray-800">Product Details</h3>
+          <p class="text-sm text-gray-600 mt-2">
+            {{ product.description }}
+          </p>
+        </div>
+
+        <!-- Material & Care -->
+        <div class="mt-6">
+          <h3 class="text-lg font-semibold text-gray-800">Material & Care</h3>
+          <ul class="text-sm text-gray-600 mt-2 list-disc list-inside">
+            <li>Cotton</li>
+            <li>Machine-wash</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <!-- Product Title -->
-  <h1 class="mt-4 text-2xl font-semibold text-gray-800 text-center">
-    {{ product.title }}
-  </h1>
-
-  <!-- Product Description -->
-  <p class="mt-3 text-gray-600 text-sm text-justify">
-    Description: {{ product.description }}
-  </p>
-
-  <!-- Product Price -->
-  <p class="mt-4 text-lg font-bold text-gray-700">
-    Price: ${{ product.price }}
-  
-  </p>
-   
-  
-
-  <!-- Actions -->
-  <div class="flex flex-row gap-4 mt-6">
-    @if (isProductInCart(product.id)) {
-    <p class="text-green-500">product is Added to cart</p>
-    } @else {
-    <button
-      (click)="productAddedToCart()"
-      class="px-4 py-2 bg-green-500 text-white rounded-md shadow-md hover:bg-green-600 transition"
-    >
-      Add to Cart
-    </button>
-    }
-
-    <button
-      class="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 transition"
-    >
-      Buy Now
-    </button>
-  </div>
-</div>
+</section>
