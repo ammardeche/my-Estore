@@ -14,6 +14,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { CategoryItemComponent } from './pages/category-item/category-item.component';
 import { NewsletterComponent } from './pages/newsletter/newsletter.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { AboutComponent } from './pages/about/about.component';
+import { PrivacyComponent } from './pages/privacy/privacy.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent, canActivate: [isNotLoggedInGuard] },
@@ -25,12 +28,16 @@ export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'list', component: ListComponent },
       { path: 'newletter', component: NewsletterComponent },
+      { path: 'contact', component: ContactComponent },
+      { path: 'about', component: AboutComponent },
+      { path: 'privacy', component: PrivacyComponent },
       {
         path: 'category',
         component: CategoriesComponent,
 
         children: [{ path: 'categoryItem', component: CategoryItemComponent }],
       },
+      { path: 'cartComponent', component: CartComponent },
 
       { path: 'edite', component: EditeComponent },
       { path: 'add', component: AddComponent },

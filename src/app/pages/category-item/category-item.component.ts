@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CatItems, ICategoryItem } from '../../core/models/ICategoryItem';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-category-item',

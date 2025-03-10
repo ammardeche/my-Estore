@@ -1,0 +1,11 @@
+.cart-visible {
+  width: 400px;
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.cart-hidden {
+  width: 0;
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+}

@@ -1,0 +1,121 @@
+<div class="container mx-auto px-4 pt-32 pb-14">
+  <div
+    class="flex flex-col md:flex-row min-h-[calc(100vh-4rem)] bg-gray-50 rounded-lg shadow-lg overflow-hidden"
+  >
+    <!-- Left Form Section -->
+    <div class="w-full md:w-1/2 p-8 bg-white">
+      <form class="space-y-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700"
+            >First Name *</label
+          >
+          <input
+            type="text"
+            class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            style="background-color: #f0f8ff; color: #333333"
+          />
+          <!-- Light blue background, dark gray text -->
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700"
+            >Last Name *</label
+          >
+          <input
+            type="text"
+            class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            style="background-color: #f0f8ff; color: #333333"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Email *</label>
+          <input
+            type="email"
+            class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            style="background-color: #f0f8ff; color: #333333"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700"
+            >Message *</label
+          >
+          <textarea
+            class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent h-32"
+            style="background-color: #f0f8ff; color: #333333"
+          ></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700"
+            >Additional Details</label
+          >
+          <textarea
+            class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent h-24"
+            style="background-color: #f0f8ff; color: #333333"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        >
+          Send Message
+        </button>
+
+        <!-- Privacy Policy Link -->
+        <div class="mt-4 text-center">
+          <a
+            routerLink="/layout/privacy"
+            class="text-blue-600 hover:text-blue-800 text-sm underline"
+          >
+            Privacy Policy
+          </a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Right Help Section -->
+    <div class="w-full md:w-1/2 p-8 bg-gray-100 flex items-center">
+      <div class="space-y-4">
+        <h2 class="text-2xl font-bold text-gray-900">How Can We Help?</h2>
+        <p class="text-gray-600">
+          Please select a topic below related to your inquiry. If you don't find
+          what you need, fill out our contact form.
+        </p>
+
+        <div class="space-y-3">
+          <a href="#" class="block text-blue-600 hover:text-blue-800"
+            >Book a Demo</a
+          >
+          <p class="text-gray-600">
+            Request a demo from one of our conversion specialists.
+          </p>
+
+          <a href="#" class="block text-blue-600 hover:text-blue-800"
+            >Get Inspired</a
+          >
+          <p class="text-gray-600">
+            Discover the many ways in which our customers use Sleeknote.
+          </p>
+
+          <a href="#" class="block text-blue-600 hover:text-blue-800"
+            >Become a Partner</a
+          >
+          <p class="text-gray-600">
+            Join our Partner Program and earn 25% recurring commissions.
+          </p>
+        </div>
+
+        <div class="mt-4 text-right">
+          <span
+            class="inline-flex items-center px-3 py-1 rounded-full bg-yellow-100 text-yellow-800 text-sm"
+          >
+            Any questions? Sleeknote? We're happy to help!
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

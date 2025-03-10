@@ -5,7 +5,15 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UiService {
-  private isOpenedSubject$ = new BehaviorSubject<boolean>(false);
+  private isOpened = signal<boolean>(false);
+
+  toggleCart() {
+    this.isOpened.update((value) => !value);
+  }
+
+  getCartState(): Signal<boolean> {
+    return this.isOpened;
+  }
 
   constructor() {}
 }

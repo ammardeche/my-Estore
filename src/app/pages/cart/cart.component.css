@@ -1,0 +1,21 @@
+.custom-scroll {
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #3629ab #f1f1f1;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 8px; /* For Chrome, Safari, Edge */
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

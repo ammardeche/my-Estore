@@ -9,3 +9,10 @@
 <div>
   <app-newsletter></app-newsletter>
 </div>
+
+<div
+  [ngClass]="{ 'cart-visible': isCartOpened(), 'cart-hidden': !isCartOpened() }"
+  class="top-0 right-0 h-full bg-white fixed"
+>
+  <app-cart></app-cart>
+</div>

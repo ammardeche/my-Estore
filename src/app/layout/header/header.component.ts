@@ -8,16 +8,18 @@ import { NgClass } from '@angular/common';
 import { CartComponent } from '../../pages/cart/cart.component';
 import { MatButtonModule } from '@angular/material/button';
 import { UiService } from '../../core/services/ui.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [FormsModule, FontAwesomeModule, NgClass, ButtonModule],
+  imports: [FormsModule, FontAwesomeModule, NgClass, ButtonModule, RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit {
   Quantity = signal<number>(0);
-
+  isMenuOpened: boolean = false;
+  currentState = signal<boolean>(false);
   constructor(
     private cartItem_service: CartItemService,
     private uiService: UiService
@@ -34,9 +36,11 @@ export class HeaderComponent implements OnInit {
   toggleMenu() {
     this.IsOpened.update((value) => !value);
   }
-  isCartOpen() {
-    this.uiService;
+
+  toggleCart() {
+    this.uiService.toggleCart();
   }
+
   ngOnInit(): void {
     this.cartItem_service.cartItemsSubject$.subscribe((res) => {
       const totalQuantity = res.reduce((sum, item) => sum + item.quantity, 0);

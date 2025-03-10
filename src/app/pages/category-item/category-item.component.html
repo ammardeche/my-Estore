@@ -1,12 +1,14 @@
 <section class="container">
   <div class="w-full flex flex-row justify-center">
-    <h2 class="text-black pb-3 title w-fit font-bold text-center text-3xl">
+    <h2
+      class="text-black pb-3 title w-fit font-bold text-center text-lg lg:text-3xl"
+    >
       What are you shopping for today?
     </h2>
   </div>
 
   <div
-    class="grid grid-cols-4 gap-6 rounded-lg justify-center items-center mt-10"
+    class="flex flex-row gap-3 flex-wrap rounded-lg justify-center items-center mt-10"
   >
     @for (category of categoriesItem; track $index) { @for (item of
     category.icategoryItems; track $index) {
