@@ -18,6 +18,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { AboutComponent } from './pages/about/about.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { PaymentComponent } from './pages/payment/payment.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent, canActivate: [isNotLoggedInGuard] },
@@ -33,6 +34,7 @@ export const routes: Routes = [
       { path: 'about', component: AboutComponent },
       { path: 'privacy', component: PrivacyComponent },
       { path: 'checkout', component: CheckoutComponent },
+      { path: 'payment', component: PaymentComponent },
       {
         path: 'category',
         component: CategoriesComponent,

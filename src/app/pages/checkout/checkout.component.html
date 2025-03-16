@@ -1,5 +1,7 @@
 <section class="py-24 px-4">
-  <div class="max-w-4xl mx-auto bg-white shadow-md p-6 rounded-lg">
+  <div
+    class="max-w-4xl mx-auto bg-white border-1 border-[#1327bf] mt-4 shadow-md p-6 rounded-lg"
+  >
     <!-- Header -->
     <div class="flex justify-between items-center mb-6">
       <h1 class="text-2xl font-bold text-black">MY BAG</h1>
@@ -41,7 +43,7 @@
                   >
                     -
                   </button>
-                  <span class="w-10 text-center text-sm">{{
+                  <span class="w-10 text-black text-center text-sm">{{
                     item.quantity
                   }}</span>
                   <button
@@ -78,25 +80,18 @@
           <p class="text-black">TBD</p>
         </div>
         <button
-          class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700"
+          routerLink="/layout/payment"
+          class="w-full bg-[#1327bf] text-white py-2 rounded"
         >
           CHECKOUT
         </button>
-        <div class="flex justify-center mt-4">
+        <div class="flex justify-center items-center mt-4">
           <p class="text-sm text-gray-600">WE ACCEPT:</p>
           <div class="flex space-x-2 ml-2">
             <!-- Placeholder for payment icons -->
-            <img src="https://via.placeholder.com/24" alt="Visa" class="h-6" />
-            <img
-              src="https://via.placeholder.com/24"
-              alt="Mastercard"
-              class="h-6"
-            />
-            <img
-              src="https://via.placeholder.com/24"
-              alt="PayPal"
-              class="h-6"
-            />
+            <img src="/visa.png" alt="Visa" class="h-8" />
+            <img src="/paypal.png" alt="Mastercard" class="h-8" />
+            <img src="/mastercard.png" alt="PayPal" class="h-8" />
           </div>
         </div>
         <p class="text-sm text-gray-600 text-center mt-2">
@@ -126,9 +121,10 @@
     <!-- Add to Bag Button -->
     <div class="mt-6">
       <button
+        routerLink=""
         class="w-full border border-gray-300 text-black py-2 rounded hover:bg-gray-100"
       >
-        ADD TO BAG
+        Go Back to home
       </button>
     </div>
   </div>
