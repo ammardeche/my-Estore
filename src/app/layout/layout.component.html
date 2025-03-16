@@ -10,9 +10,15 @@
   <app-newsletter></app-newsletter>
 </div>
 
+@if (isCartOpened()) {
+<div
+  class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-40"
+  (click)="closecart()"
+></div>
+}
 <div
   [ngClass]="{ 'cart-visible': isCartOpened(), 'cart-hidden': !isCartOpened() }"
-  class="top-0 right-0 h-full bg-white fixed"
+  class="fixed top-0 right-0 h-full bg-white z-50 shadow-lg transition-transform duration-300 ease-in-out"
 >
   <app-cart></app-cart>
 </div>

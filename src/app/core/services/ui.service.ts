@@ -11,6 +11,10 @@ export class UiService {
     this.isOpened.update((value) => !value);
   }
 
+  setCartState(state: boolean) {
+    this.isOpened.set(state);
+  }
+
   getCartState(): Signal<boolean> {
     return this.isOpened;
   }

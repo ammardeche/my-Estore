@@ -15,10 +15,12 @@ import { ICartItems } from '../../core/models/ICartItems';
 import { SignalGetter, signalSetFn } from '@angular/core/primitives/signals';
 import { FormsModule, NgModel } from '@angular/forms';
 import { map, tap } from 'rxjs';
+import { RouterLink } from '@angular/router';
+import { UiService } from '../../core/services/ui.service';
 
 @Component({
   selector: 'app-cart',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
   providers: [CurrencyPipe],
@@ -42,7 +44,10 @@ export class CartComponent implements OnInit {
       '1.2-2'
     );
   }
-  constructor(private cart_service: CartItemService) {}
+  constructor(
+    private cart_service: CartItemService,
+    private uiService: UiService
+  ) {}
   ngOnInit(): void {
     this.getitem();
 
@@ -60,5 +65,8 @@ export class CartComponent implements OnInit {
   }
   dicrement(item: ICartItems) {
     this.cart_service.DecrementQuantity(item.product.id);
+  }
+  closeCart() {
+    this.uiService.setCartState(false);
   }
 }

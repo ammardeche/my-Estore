@@ -17,6 +17,7 @@ import { NewsletterComponent } from './pages/newsletter/newsletter.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AboutComponent } from './pages/about/about.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent, canActivate: [isNotLoggedInGuard] },
@@ -31,6 +32,7 @@ export const routes: Routes = [
       { path: 'contact', component: ContactComponent },
       { path: 'about', component: AboutComponent },
       { path: 'privacy', component: PrivacyComponent },
+      { path: 'checkout', component: CheckoutComponent },
       {
         path: 'category',
         component: CategoriesComponent,

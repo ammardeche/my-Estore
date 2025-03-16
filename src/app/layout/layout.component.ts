@@ -35,4 +35,8 @@ export class LayoutComponent {
   constructor(private uiService: UiService) {
     this.isCartOpened = this.uiService.getCartState();
   }
+
+  closecart() {
+    this.uiService.setCartState(false);
+  }
 }
