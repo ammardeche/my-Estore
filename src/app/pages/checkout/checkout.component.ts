@@ -24,4 +24,11 @@ export class CheckoutComponent implements OnInit {
       this.cartItems.set(res);
     });
   }
+
+  incrementQuantity(productId: number) {
+    this.cartService.incrementQuantity(productId);
+  }
+  DecrementQuantity(productId: number) {
+    this.cartService.DecrementQuantity(productId);
+  }
 }

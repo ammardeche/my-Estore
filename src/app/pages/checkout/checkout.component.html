@@ -38,6 +38,7 @@
                 <label class="text-sm text-gray-600 mr-2">Qty</label>
                 <div class="flex items-center border border-gray-300 rounded">
                   <button
+                    (click)="DecrementQuantity(item.product.id)"
                     class="w-8 h-8 flex items-center justify-center text-gray-600 hover:bg-gray-100"
                     [disabled]="item.quantity <= 1"
                   >
@@ -47,6 +48,7 @@
                     item.quantity
                   }}</span>
                   <button
+                    (click)="incrementQuantity(item.product.id)"
                     class="w-8 h-8 flex items-center justify-center text-gray-600 hover:bg-gray-100"
                   >
                     +
