@@ -31,4 +31,8 @@ export class CheckoutComponent implements OnInit {
   DecrementQuantity(productId: number) {
     this.cartService.DecrementQuantity(productId);
   }
+
+  removeItem(productId: number) {
+    this.cartService.removeItem(productId);
+  }
 }

@@ -59,4 +59,13 @@ export class CartItemService {
   getCartItem(): Observable<ICartItems[]> {
     return this.cartItemsSubject$.asObservable();
   }
+
+  removeItem(productId: number) {
+    const currentProduct = this.cartItemsSubject$.getValue();
+    const updateCart = currentProduct.filter(
+      (item) => item.product.id !== productId
+    );
+
+    this.cartItemsSubject$.next(updateCart);
+  }
 }
