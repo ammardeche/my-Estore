@@ -19,13 +19,14 @@ import { AboutComponent } from './pages/about/about.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { PaymentComponent } from './pages/payment/payment.component';
+import { ProductslistComponent } from './pages/productslist/productslist.component';
 
 export const routes: Routes = [
-  { path: '', component: LoginComponent, canActivate: [isNotLoggedInGuard] },
+  { path: 'login', component: LoginComponent },
   {
     path: 'layout',
     component: LayoutComponent,
-    canActivate: [isLoggedInGuard],
+
     children: [
       { path: '', component: HomeComponent },
       { path: 'list', component: ListComponent },
@@ -35,6 +36,7 @@ export const routes: Routes = [
       { path: 'privacy', component: PrivacyComponent },
       { path: 'checkout', component: CheckoutComponent },
       { path: 'payment', component: PaymentComponent },
+      { path: 'allProducts', component: ProductslistComponent },
       {
         path: 'category',
         component: CategoriesComponent,
@@ -52,5 +54,6 @@ export const routes: Routes = [
       },
     ],
   },
+  { path: '', redirectTo: 'layout', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];

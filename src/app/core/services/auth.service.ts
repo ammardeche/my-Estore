@@ -12,7 +12,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AuthService {
   Auth_api = 'https://dummyjson.com/auth/login';
-
   router = inject(Router);
   private isloggedInSubject$ = new BehaviorSubject<boolean>(false);
   authToken: string = 'token';
@@ -26,10 +25,16 @@ export class AuthService {
 
   login(username: string, password: string): Observable<IUser> {
     return this.http.post<IUser>(this.Auth_api, { username, password }).pipe(
+      // we use tap operator to get the response and set the token in the local storage and tap is used to perform side effects
+      // side effect is any action that is performed in the application that does not affect the main flow of the application
       tap((res: IUser) => {
+        // first step when the user is logged in seccessfully we catch the token
         const acces_token = res.accessToken;
         console.log(res.accessToken);
+        // then we set the token in the local storage to keep it in the browser
+        // so that we can use it in the future to keep the user logged in
         localStorage.setItem(this.authToken, acces_token);
+        // then we set token in the http service to keep it in the header of the request
         this.http.setToken(acces_token);
         console.log('Setting isLoggedIn to true'); // Debugging log
         this.isloggedInSubject$.next(true);

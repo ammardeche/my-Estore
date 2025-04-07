@@ -29,29 +29,26 @@ export class CartComponent implements OnInit {
   currencyPipe = inject(CurrencyPipe);
   cartItems = signal<ICartItems[]>([]);
   quantity = signal<number>(0);
+  totalPrice!: Signal<number>;
 
-  totalCost = computed(() => {
-    return this.cartItems().reduce((sum, item) => {
-      return sum + item.product.price * item.quantity;
-    }, 0);
-  });
+  constructor(
+    private cart_service: CartItemService,
+    private uiService: UiService
+  ) {
+    this.totalPrice = this.cart_service.subTotal;
+    console.log('total price ', this.totalPrice());
+  }
 
   formattedTotal() {
     return this.currencyPipe.transform(
-      this.totalCost(),
+      this.totalPrice(),
       'USD',
       'symbol',
       '1.2-2'
     );
   }
-  constructor(
-    private cart_service: CartItemService,
-    private uiService: UiService
-  ) {}
   ngOnInit(): void {
     this.getitem();
-
-    console.log('total');
   }
 
   getitem() {

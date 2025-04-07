@@ -1,5 +1,7 @@
 <section class="py-24 px-4">
   <div
+  data-aos="flip-up"
+
     class="max-w-4xl mx-auto bg-white border-1 border-[#1327bf] mt-4 shadow-md p-6 rounded-lg"
   >
     <!-- Header -->
@@ -9,7 +11,7 @@
     </div>
 
     <!-- Two-Column Layout for Cart Items and Summary -->
-    <div class="flex flex-col md:flex-row md:space-x-6">
+    <div  class="flex flex-col md:flex-row md:space-x-6">
       <!-- Left Column: Cart Items -->
       <div class="flex-1 border-t border-gray-200 pt-4">
         @for (item of cartItems(); track $index) {
@@ -76,16 +78,30 @@
       <div class="w-full md:w-1/3 border-t border-gray-200 pt-4 mt-4 md:mt-0">
         <div class="flex justify-between mb-2">
           <p class="text-black">Sub-total</p>
-          <p class="text-black">$</p>
+          <p class="text-black font-bold">
+            {{ subTotal() | currency : "USD" : "symbol" : "1.2-2" }}
+          </p>
         </div>
         <div class="flex justify-between mb-2">
           <p class="text-black">Shipping</p>
-          <p class="text-black">TBD</p>
+          <p class="text-black font-bold">
+            {{ shippingCost() | currency : "USD" : "symbol" : "1.2-2" }}
+          </p>
         </div>
         <div class="flex justify-between mb-4">
           <p class="text-black">Sales tax</p>
-          <p class="text-black">TBD</p>
+          <p class="text-black font-bold">
+            {{ salesTax() | currency : "USD" : "symbol" : "1.2-2" }}
+          </p>
         </div>
+
+        <div class="flex justify-between mb-4">
+          <p class="text-black">Total</p>
+          <p class="text-green-600 font-bold">
+            {{ totalCost() | currency : "USD" : "symbol" : "1.2-2" }}
+          </p>
+        </div>
+
         <button
           routerLink="/layout/payment"
           class="w-full bg-[#1327bf] text-white py-2 rounded"

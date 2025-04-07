@@ -9,10 +9,17 @@ import { animate } from '@angular/animations';
 import { CategoryItemComponent } from '../category-item/category-item.component';
 import { CategoriesComponent } from '../categories/categories.component';
 import { ListComponent } from '../list/list.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, ButtonModule, CategoryItemComponent, ListComponent],
+  imports: [
+    CommonModule,
+    ButtonModule,
+    CategoryItemComponent,
+    ListComponent,
+    RouterLink,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

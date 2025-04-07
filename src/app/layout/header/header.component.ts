@@ -9,6 +9,7 @@ import { CartComponent } from '../../pages/cart/cart.component';
 import { MatButtonModule } from '@angular/material/button';
 import { UiService } from '../../core/services/ui.service';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -22,12 +23,13 @@ export class HeaderComponent implements OnInit {
   currentState = signal<boolean>(false);
   constructor(
     private cartItem_service: CartItemService,
-    private uiService: UiService
+    private uiService: UiService,
+    private authService: AuthService
   ) {}
-
   IsOpened = signal<boolean>(false);
   IsCartOpened = signal<boolean>(false);
   IsUserbox = signal<boolean>(false);
+  isLoggedIn: boolean = false;
 
   UserBoxToggle() {
     this.IsUserbox.update((value) => !value);
@@ -41,6 +43,12 @@ export class HeaderComponent implements OnInit {
     this.uiService.toggleCart();
   }
 
+  isLoggedInUser() {
+    this.authService.isLoggedInValue().subscribe((res) => {
+      this.isLoggedIn = res;
+      console.log(res);
+    });
+  }
   ngOnInit(): void {
     this.cartItem_service.cartItemsSubject$.subscribe((res) => {
       const totalQuantity = res.reduce((sum, item) => sum + item.quantity, 0);
@@ -50,5 +58,7 @@ export class HeaderComponent implements OnInit {
     this.cartItem_service.incQuantity$.subscribe((quantity) => {
       this.Quantity.update((value) => value + quantity);
     });
+
+    this.isLoggedInUser();
   }
 }

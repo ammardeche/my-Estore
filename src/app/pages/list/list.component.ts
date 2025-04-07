@@ -11,6 +11,7 @@ import { RouterLink } from '@angular/router';
 import { UiService } from '../../core/services/ui.service';
 import { CartItemService } from '../../core/services/cart-item.service';
 import { ICartItems } from '../../core/models/ICartItems';
+import * as Aos from 'aos';
 
 @Component({
   selector: 'app-list',
@@ -36,25 +37,17 @@ export class ListComponent implements OnInit {
     this.fetchProducts();
     this.fetchCategories();
     this.isProductAdded();
+
+    Aos.init({
+      duration: 2000,
+      easing: 'ease-in-out',
+      once: true,
+    });
   }
 
   isProductinCart(productId: number): boolean {
     return this.addedProducts.get(productId) || false;
   }
-
-  filterProducts = computed(() => {
-    return this.products().filter((product) => {
-      const matchesSearchText = product.title
-        .toLowerCase()
-        .includes(this.searchText().toLowerCase());
-      const matchesCategory = product.category
-        .toLocaleLowerCase()
-        .includes(this.selectedCategory().toLowerCase());
-
-      return matchesSearchText && matchesCategory;
-    });
-  });
-
   fetchProducts() {
     this.product_Service.getProuducts().subscribe({
       next: (res: any) => {
@@ -82,12 +75,10 @@ export class ListComponent implements OnInit {
       },
     });
   }
-
   OnCatgeoryChange(category: any) {
     this.selectedCategory.set(category);
     console.log('Selected Category', this.selectedCategory());
   }
-
   addtoCart(id: number) {
     const product = this.products().find((p) => p.id === id);
     if (product) {

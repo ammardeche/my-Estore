@@ -1,44 +1,82 @@
-<div class="min-h-screen flex items-center justify-center bg-gray-100">
-  <form
-    [formGroup]="registerForm"
-    (ngSubmit)="onSubmit()"
-    class="bg-white shadow-lg rounded-lg px-6 py-8 flex flex-col gap-4 w-full max-w-sm"
+<div class="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+  <div
+    class="bg-white shadow-lg rounded-lg flex flex-col md:flex-row w-full max-w-4xl"
   >
-    <h2 class="text-2xl font-bold text-gray-800 text-center">Login</h2>
-
-    <!-- Email Input -->
-    <div class="flex flex-col gap-1">
-      <input
-        class="bg-gray-100 border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
-        formControlName="name"
-        placeholder="Enter your email"
-        type="text"
-      />
-      @if (name?.invalid && name?.touched) {
-      <p class="text-sm text-red-500">Please enter a valid email.</p>
-      }
-    </div>
-
-    <!-- Password Input -->
-    <div class="flex flex-col gap-1">
-      <input
-        class="bg-gray-100 border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
-        formControlName="password"
-        placeholder="Enter your password"
-        type="password"
-      />
-      @if (password?.invalid && password?.touched) {
-      <p class="text-sm text-red-500">Password is required.</p>
-      }
-    </div>
-
-    <!-- Submit Button -->
-    <button
-      class="bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition duration-200"
-      type="submit"
-      [disabled]="registerForm.invalid"
+    <!-- Left Section -->
+    <div
+      class="w-full md:w-1/2 bg-gradient-to-br from-[#1327bf] to-blue-600 text-white p-8 rounded-t-lg md:rounded-l-lg md:rounded-tr-none flex flex-col justify-center items-center text-center"
     >
-      Login
-    </button>
-  </form>
+      <h2 class="text-3xl font-bold text-white">
+        Simplify management with our dashboard.
+      </h2>
+      <p class="mt-2 text-sm text-white">
+        Simplify your e-commerce management with our user-friendly admin
+        dashboard.
+      </p>
+    </div>
+
+    <!-- Right Section -->
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+      class="w-full md:w-1/2 px-8 py-10 flex flex-col gap-6"
+    >
+      <h2 class="text-2xl font-bold text-black text-center">Welcome Back</h2>
+      <p class="text-sm text-gray-500 text-center">
+        Please login to your account
+      </p>
+
+      <!-- Email Input -->
+      <div class="flex flex-col gap-1">
+        <input
+          class="bg-gray-200 border border-gray-400 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#1327bf] focus:outline-none text-black"
+          formControlName="name"
+          placeholder="Email address"
+          type="text"
+        />
+        @if (name?.invalid && name?.touched) {
+        <p class="text-sm text-red-500">Please enter a valid email.</p>
+        }
+      </div>
+
+      <!-- Password Input -->
+      <div class="flex flex-col gap-1">
+        <input
+          class="bg-gray-200 border border-gray-400 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#1327bf] focus:outline-none text-black"
+          formControlName="password"
+          placeholder="Password"
+          type="password"
+        />
+        @if (password?.invalid && password?.touched) {
+        <p class="text-sm text-red-500">Password is required.</p>
+        }
+      </div>
+
+      <button
+        class="bg-[#1327bf] text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition duration-200"
+        type="submit"
+        [disabled]="registerForm.invalid"
+      >
+        Login
+      </button>
+
+      <p class="text-sm text-gray-500 text-center">Or Login with</p>
+      <div class="flex justify-center gap-4">
+        <button
+          class="bg-white border border-gray-300 px-4 py-2 rounded-md shadow hover:bg-gray-100 text-black"
+        >
+          Google
+        </button>
+        <button
+          class="bg-white border border-gray-300 px-4 py-2 rounded-md shadow hover:bg-gray-100 text-black"
+        >
+          Facebook
+        </button>
+      </div>
+
+      <p class="text-sm text-gray-500 text-center">
+        Don't have an account? <a href="#" class="text-[#1327bf]">Sign up</a>
+      </p>
+    </form>
+  </div>
 </div>

@@ -1,4 +1,6 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+
 import { ICartItems } from '../models/ICartItems';
 import { IProduct } from '../models/IProduct';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -8,15 +10,20 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class CartItemService {
   cartItemsSubject$ = new BehaviorSubject<ICartItems[]>([]);
+  // isProductAddedSubject$  tracks the product added to the cart
   isProductAddedSubject$ = new BehaviorSubject<Map<number, boolean>>(new Map());
   incQuantity$ = new BehaviorSubject<number>(0);
+  // we use toSignal to convert the observable to a signal
+  CartItemsSignale = toSignal(this.cartItemsSubject$.asObservable(), {
+    initialValue: [],
+  });
 
   constructor() {}
 
   addToCart(product: IProduct) {
     const currentProducts = this.cartItemsSubject$.getValue();
     const isProductAdded = this.isProductAddedSubject$.getValue();
-    const incQuantity = this.incQuantity$.getValue();
+    // some() method returns true if at least one element in the array passes the test implemented by the provided function.
 
     if (!currentProducts.some((item) => item.product.id === product.id)) {
       // !true
@@ -51,7 +58,7 @@ export class CartItemService {
     this.cartItemsSubject$.next(updateCart);
   }
 
-  // inssure that the is product add observed
+  // inssure that the  product added is observed
   isProductAddedStatus(): Observable<Map<number, boolean>> {
     return this.isProductAddedSubject$.asObservable();
   }
@@ -68,4 +75,11 @@ export class CartItemService {
 
     this.cartItemsSubject$.next(updateCart);
   }
+
+  subTotal = computed(() => {
+    const cartItems = this.CartItemsSignale();
+    return cartItems.reduce((acc, item) => {
+      return acc + item.product.price * item.quantity;
+    }, 0);
+  });
 }
