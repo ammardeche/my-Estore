@@ -50,6 +50,7 @@ export class DetailsComponent implements OnInit {
 
   addtocart(product: IProduct) {
     this.cart_service.addToCart(product);
+    this.addedProducts.set(product.id, true);
   }
 
   productAddedToCart() {

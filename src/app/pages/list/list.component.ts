@@ -39,9 +39,9 @@ export class ListComponent implements OnInit {
     this.isProductAdded();
 
     Aos.init({
-      duration: 2000,
+      duration: 1200,
       easing: 'ease-in-out',
-      once: true,
+      once: false,
     });
   }
 

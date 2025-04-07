@@ -40,7 +40,7 @@ export class CartItemService {
   incrementQuantity(productId: number) {
     const currentProduct = this.cartItemsSubject$.getValue();
     const updateCart = currentProduct.map((item) =>
-      item.product.id === productId
+      item.product.id === productId && item.quantity < item.product.stock
         ? { ...item, quantity: item.quantity + 1 }
         : item
     );
@@ -72,7 +72,9 @@ export class CartItemService {
     const updateCart = currentProduct.filter(
       (item) => item.product.id !== productId
     );
-
+    this.isProductAddedSubject$.next(
+      this.isProductAddedSubject$.getValue().set(productId, false)
+    );
     this.cartItemsSubject$.next(updateCart);
   }
 

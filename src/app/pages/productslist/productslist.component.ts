@@ -3,6 +3,7 @@ import { ProductService } from '../../core/services/product.service';
 import { IProduct } from '../../core/models/IProduct';
 import { FormsModule, NgModel } from '@angular/forms';
 import { CartItemService } from '../../core/services/cart-item.service';
+import * as Aos from 'aos';
 
 @Component({
   selector: 'app-productslist',
@@ -16,11 +17,17 @@ export class ProductslistComponent implements OnInit {
   addedProducts = new Map<number, boolean>();
 
   ngOnInit(): void {
+    Aos.init({
+      duration: 1200,
+      easing: 'ease-in-out',
+      once: true,
+    });
     this.productService.getProuducts().subscribe({
       next: (res: any) => {
         this.products.set(res.products);
       },
     });
+    this.isProductadded();
   }
 
   filtredProducts = computed(() => {
@@ -34,10 +41,13 @@ export class ProductslistComponent implements OnInit {
 
   addProduct(product: IProduct) {
     this.cartService.addToCart(product);
+    this.addedProducts.set(product.id, true);
   }
+
   isProductinCart(productId: number): boolean {
     return this.addedProducts.get(productId) || false;
   }
+
   isProductadded() {
     this.cartService.isProductAddedStatus().subscribe((res) => {
       this.addedProducts = res;

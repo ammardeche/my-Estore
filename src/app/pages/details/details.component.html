@@ -37,24 +37,24 @@
         </p>
 
         <!-- Action Buttons -->
-        <div class="flex gap-4 mt-6">
+        <div class="flex flex-row items-center gap-4 mt-6">
           <button
             class="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg hover:bg-gray-300"
           >
             ♡ Wishlist
           </button>
 
-          <ng-container *ngIf="isProductInCart(product.id)">
-            <p class="text-green-500 font-medium">✔️ Added to Cart</p>
-          </ng-container>
+          @if (isProductInCart(product.id)) {
+          <p class="text-green-500 font-bold">Added to Cart</p>
 
+          } @else {
           <button
-            *ngIf="!isProductInCart(product.id)"
-            (click)="productAddedToCart()"
-            class="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700"
+            (click)="addtocart(product)"
+            class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700"
           >
-            + Add to Cart
+            Add to Cart
           </button>
+          }
         </div>
 
         <!-- Product Details -->

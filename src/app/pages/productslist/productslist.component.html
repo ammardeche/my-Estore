@@ -12,6 +12,7 @@
 
     <!-- Product Grid -->
     <div
+      data-aos="fade-down"
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
     >
       @for (item of filtredProducts(); track $index) {
@@ -37,7 +38,7 @@
         </div>
 
         @if(isProductinCart(item.id)) {
-        <p>product added</p>
+        <p class="text-green-600 font-bold text-center mt-10">Added to cart</p>
         } @else {
         <button
           (click)="addProduct(item)"
